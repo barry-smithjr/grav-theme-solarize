@@ -1,0 +1,79 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
+<head>
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'partials/metadata.html.twig' %}
+
+    <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png') }}" />
+    <link rel="canonical" href="{{ page.url(true, true) }}" />
+{% endblock head %}
+
+    <script src="{{ url('theme://js/jquery.min.js') }}"></script>
+    <script src="{{ url('theme://js/jquery.dropotron.min.js') }}"></script>
+
+{% block stylesheets %}
+    {% do assets.addCss('theme://css/skel.css', 100) %}
+    {% do assets.addCss('theme://css/style.css', 99) %}
+    {% do assets.addCss('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 98) %}
+    {% do assets.addCss('theme://css/custom.css', 97) %}
+{% endblock %}
+
+{% block javascripts %}
+    {% do assets.addJs('jquery', 100) %}
+{% endblock %}
+
+{% block assets deferred %}
+    {{ assets.css()|raw }}
+    {{ assets.js()|raw }}
+{% endblock %}
+</head>
+<body id="top" class="">
+
+{% block header %}
+    <div class="wrapper style1">
+        <div id="header">
+            <!-- <div class="header"> -->
+                <div class="container">
+                    <h1><a href="#" id="logo">Solarize</a></h1>
+                    {% block header_navigation %}
+                    <nav id="nav">
+                        {% include 'partials/navigation.html.twig' %}
+                    </nav>
+                    {% endblock %}
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+{% endblock %}
+
+<!-- Main -->
+<div id="main" class="wrapper style4">
+    {% block body %}
+        <div id="content" class="container">
+            <section>
+            {% block content %}{% endblock %}
+            </section>
+        </div>
+    {% endblock %}
+</div>
+
+{% block footer %}
+    <div class="footer text-center">
+        <div class="wrapper padding">
+            <p><a href="http://getgrav.org">Grav</a> was <i class="fa fa-code"></i> with <i class="fa fa-heart"></i> by <a href="http://www.rockettheme.com">RocketTheme</a>.</p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block bottom %}
+    {{ assets.js('bottom')|raw }}
+{% endblock %}
+
+</body>
+</html>

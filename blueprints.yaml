@@ -1,0 +1,32 @@
+name: Solarize
+slug: solarize
+type: theme
+version: 0.1.0
+description: Solarize theme from templated.co
+icon: rebel
+author:
+  name: Barry Smith
+  email: barry@barrysmith.me
+homepage: https://github.com/barry-smithjr/grav-theme-solarize
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/barry-smithjr/grav-theme-solarize/issues
+readme: https://github.com/barry-smithjr/grav-theme-solarize/blob/develop/README.md
+license: CC-BY 3.0
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in Menu
+        highlight: 1
+        default: 1
+        options:
+          1: PLUGIN_ADMIN.ENABLED
+          0: PLUGIN_ADMIN.DISABLED
+        validate:
+          type: bool
