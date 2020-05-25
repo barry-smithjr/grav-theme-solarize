@@ -16,10 +16,11 @@
 
     <script src="{{ url('theme://js/jquery.min.js') }}"></script>
     <script src="{{ url('theme://js/jquery.dropotron.min.js') }}"></script>
+    <script src="{{ url('theme://js/skel.min.js') }}"></script>
+    <script src="{{ url('theme://js/skel-layers.min.js') }}"></script>
+    <script src="{{ url('theme://js/init.js') }}"></script>
 
 {% block stylesheets %}
-    {% do assets.addCss('theme://css/skel.css', 100) %}
-    {% do assets.addCss('theme://css/style.css', 99) %}
     {% do assets.addCss('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 98) %}
     {% do assets.addCss('theme://css/custom.css', 97) %}
 {% endblock %}
